@@ -25,6 +25,9 @@
     {% endif %}
   </head>
   <body style="background-image: url('static/img/bg5.jpg') ;background-color:blue; background-position:center;background-attachment: fixed;">
+    
+    <script>var lon={{lon}};  var lat={{lat}}; </script>
+    
     <div id="back"></div>
     <div id="front"></div>
     
@@ -52,81 +55,19 @@
           </table>  
        
     </div>
-    <div id="map" class="map right" style="margin: 50px;"></div>
-    <script type="text/javascript">
-    var attribution = new ol.control.Attribution({
-     collapsible: false
- });
-
- var map = new ol.Map({
-     controls: ol.control.defaults({attribution: false}).extend([attribution]),
-     layers: [
-         new ol.layer.Tile({
-             source: new ol.source.OSM({
-                 attributions: [ ol.source.OSM.ATTRIBUTION, 'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>' ],
-             })
-         })
-     ],
-     target: 'map',
-     view: new ol.View({
-         center: ol.proj.fromLonLat([{{lon}},{{lat}}]),
-         maxZoom: 18,
-         zoom: 12
-     })
- });
-
- var layer = new ol.layer.Vector({
-     source: new ol.source.Vector({
-         features: [
-             new ol.Feature({
-                 geometry: new ol.geom.Point(ol.proj.fromLonLat([{{lon}},{{lat}}]))
-             })
-         ]
-     })
- });
- map.addLayer(layer);
-</script>
+<div id="map" class="map right" style="margin: 50px;"></div>
 </div>
 <div id="popup" class="ol-popup">
   <a href="#" id="popup-closer" class="ol-popup-closer"></a>
   <div id="popup-content"></div>  
-
+</div>
 </div>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script>
- var container = document.getElementById('popup');
- var content = document.getElementById('popup-content');
- var closer = document.getElementById('popup-closer');
- var overlay = new ol.Overlay({
-     element: container,
-     autoPan: true,
-     autoPanAnimation: {
-         duration: 250
-     }
- });
- map.addOverlay(overlay);
-
- closer.onclick = function() {
-     overlay.setPosition(undefined);
-     closer.blur();
-     return false;
- };
- map.on('singleclick', function (event) {
-     if (map.hasFeatureAtPixel(event.pixel) === true) {
-         var coordinate = event.coordinate;
-
-         content.innerHTML = '{{lat}},{{lon}}';
-         overlay.setPosition(coordinate);
-     } else {
-         overlay.setPosition(undefined);
-         closer.blur();
-     }
- });
-
- </script>
+    <script src="{{url_for('static', filename='mapping.js')}}"></script>
+    <script src="{{url_for('static', filename='popup.js')}}"></script>
 
   </body>
 </html>
