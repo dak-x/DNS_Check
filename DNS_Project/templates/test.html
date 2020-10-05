@@ -32,8 +32,13 @@
     <div id="front"></div>
     
     <div class="bgimg3 w3-display-container wrapper">
-    <div class="left"style="width: 600px;
+        <div id="map" class="map right" style="margin: 10px; height: 400px;
+  width: 400px;" ></div>
+        {% for key in post %}
+
+    <div style="width: 600px;
   margin: 20px;background-image: url('static/img/formbg.png')">
+        <h2 style="color: white">{{ key }}</h2>
         <table style="border:3px solid black;box-shadow:2px 2px 2px black;
         padding: 50px;
         margin: 30px;
@@ -41,21 +46,16 @@
         color:white;
         font-size:25px;
         float: left;
-        "
-        >   <tr>  
-            <th style="padding: 10px;">Category</th>  
-            <td style="padding: 10px;">Value</td>  
+        ">
+            {% for x in post[key] %}
+            <tr>
+            {% for y in x %}
+            <td style="padding: 10px;">{{ y }}</td>
+            {% endfor %}
           </tr> 
-            {% for key, value in post.items() %}  
-              <tr>  
-                      <th style="padding: 10px;"> {{ key }} </th>  
-                      <td style="padding: 10px;"> {{ value }} </td>  
-              </tr>  
-            {% endfor %}  
-          </table>  
-       
+            {% endfor %}
+          </table>
     </div>
-<div id="map" class="map right" style="margin: 50px;"></div>
 </div>
 <div id="popup" class="ol-popup">
   <a href="#" id="popup-closer" class="ol-popup-closer"></a>
