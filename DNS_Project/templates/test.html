@@ -24,15 +24,12 @@
       <title>DNS LOOKUP</title>
     {% endif %}
   </head>
-  <body style="background-image: url('static/img/bg5.jpg') ;background-color:blue; background-position:center;background-attachment: fixed;">
-    
-    <script>var lon={{lon}};  var lat={{lat}}; </script>
-    
+  <body style="background-image: url('static/img/bg4.jpg') ;background-color:violet; background-position:center;background-attachment: fixed;">
     <div id="back"></div>
     <div id="front"></div>
-    
+    <script>var lon={{lon}};  var lat={{lat}}; </script>
     <div class="bgimg3 w3-display-container wrapper">
-        <div id="map" class="map right" style="margin: 10px; height: 400px;
+        <div id="left_half" class="left" style="margin: 10px; height: 400px;
   width: 400px;" ></div>
         {% for key in post %}
 
@@ -56,11 +53,14 @@
             {% endfor %}
           </table>
     </div>
-</div>
+        {% endfor %}
+
+<iv id="map" class="map right" style="top: 0%;"></div>
+
 <div id="popup" class="ol-popup">
   <a href="#" id="popup-closer" class="ol-popup-closer"></a>
   <div id="popup-content"></div>  
-</div>
+
 </div>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -68,7 +68,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='mapping.js')}}"></script>
     <script src="{{url_for('static', filename='popup.js')}}"></script>
-
   </body>
 </html>
 
