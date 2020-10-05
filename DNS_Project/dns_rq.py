@@ -5,8 +5,22 @@ from dns.rdataclass import RdataClass
 import dns.name
 
 # Has been directly imported into app.py
-def get_records(domain_name: str, record_type: RdataType, dns_addr: str):
+def get_records(domain_name: str, record_type, dns_addr: str):
     # TODO: Add fields names for CNAME , PTR , SRV records
+    mapping = {
+        "ANY":RdataType.ANY,
+        "A":RdataType.A,
+        "AAAA":RdataType.AAAA,
+        "CNAME":RdataType.CNAME,
+        "MX":RdataType.MX,
+        "NS":RdataType.NS,
+        "PTR":RdataType.PTR,
+        "SRV":RdataType.SRV,
+        "SOA":RdataType.SOA,
+        "TXT":RdataType.TXT,
+        "CAA":RdataType.CAA
+    }
+    record_type = mapping[record_type]
     Table_Header = {
         RdataType.A: ["Type", "Domain Name", "Address", "TTL"],
         RdataType.AAAA: ["Type", "Domain Name", "Address", "TTL"],
