@@ -3,8 +3,11 @@ from dns.rdatatype import RdataType
 import dns.query
 from dns.rdataclass import RdataClass
 import dns.name
+import dns.reversename
 
 # Has been directly imported into app.py
+
+
 def get_records(domain_name: str, record_type: RdataType, dns_addr: str):
     # TODO: Add fields names for CNAME , PTR , SRV records
     Table_Header = {
@@ -27,16 +30,15 @@ def get_records(domain_name: str, record_type: RdataType, dns_addr: str):
         Qry_List = [record_type]
 
     Table_Dict = {}
+    domain_name = dns.name.from_text(domain_name)
 
     for qry in Qry_List:
 
         msg = dns.message.make_query(domain_name, qry)
         response = dns.query.tcp(msg, where=dns_addr)
 
-        record = response.find_rrset(response.answer, dns.name.from_text(
-            domain_name), RdataClass.IN, qry, create=True).to_text().split("\n")
-
-        # print(record)
+        record = response.find_rrset(
+            response.answer, domain_name, RdataClass.IN, qry, create=True).to_text().split("\n")
         table_content = [Table_Header[qry][:]]
 
         for line in record:
@@ -55,9 +57,21 @@ def get_records(domain_name: str, record_type: RdataType, dns_addr: str):
 
     return Table_Dict
 
-#Testing for get_records function
-# A = get_records("google.com", dns.rdatatype.ANY, "8.8.8.8")
+
+def get_reversename(addr: str, dns_addr="8.8.8.8"):
+    x = dns.reversename.from_address(addr)
+    msg = dns.message.make_query(x, RdataType.ANY)
+    response = dns.query.udp(msg, dns_addr)
+    record = response.find_rrset(
+        response.answer, x, RdataClass.IN, RdataType.PTR).to_text().split(" ")[-1]
+    return record
+
+# Testing for get_records()
+# A = get_records("iitjammu.ac.in", dns.rdatatype.ANY, "8.8.8.8")
 # for x in A:
 #     print(x)
 #     for line in A[x]:
 #         print("        ", line)
+
+# Testing get_reversename()
+# print(get_reversename("8.8.8.8"))
