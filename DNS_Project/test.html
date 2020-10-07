@@ -24,18 +24,16 @@
       <title>DNS LOOKUP</title>
     {% endif %}
   </head>
-  <body style="background-image: url('static/img/bg4.jpg') ;background-color:violet; background-position:center;background-attachment: fixed;">
+  <body style="background-image: url('static/img/bg5.jpg') ;background-color:blue; background-position:center;background-attachment: fixed;">
+    
+    <script>var lon={{lon}};  var lat={{lat}}; </script>
+    
     <div id="back"></div>
     <div id="front"></div>
-    <script>var lon={{lon}};  var lat={{lat}}; </script>
+    
     <div class="bgimg3 w3-display-container wrapper">
-        <div id="left_half" class="left" style="margin: 10px; height: 400px;
-  width: 400px;" ></div>
-        {% for key in post %}
-
-    <div style="width: 600px;
+    <div class="left"style="width: 600px;
   margin: 20px;background-image: url('static/img/formbg.png')">
-        <h2 style="color: white">{{ key }}</h2>
         <table style="border:3px solid black;box-shadow:2px 2px 2px black;
         padding: 50px;
         margin: 30px;
@@ -43,24 +41,26 @@
         color:white;
         font-size:25px;
         float: left;
-        ">
-            {% for x in post[key] %}
-            <tr>
-            {% for y in x %}
-            <td style="padding: 10px;">{{ y }}</td>
-            {% endfor %}
+        "
+        >   <tr>  
+            <th style="padding: 10px;">Category</th>  
+            <td style="padding: 10px;">Value</td>  
           </tr> 
-            {% endfor %}
-          </table>
+            {% for key, value in post.items() %}  
+              <tr>  
+                      <th style="padding: 10px;"> {{ key }} </th>  
+                      <td style="padding: 10px;"> {{ value }} </td>  
+              </tr>  
+            {% endfor %}  
+          </table>  
+       
     </div>
-        {% endfor %}
-
-<iv id="map" class="map right" style="top: 0%;"></div>
-
+<div id="map" class="map right" style="margin: 50px;"></div>
+</div>
 <div id="popup" class="ol-popup">
   <a href="#" id="popup-closer" class="ol-popup-closer"></a>
   <div id="popup-content"></div>  
-
+</div>
 </div>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -68,6 +68,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='mapping.js')}}"></script>
     <script src="{{url_for('static', filename='popup.js')}}"></script>
+
   </body>
 </html>
 
