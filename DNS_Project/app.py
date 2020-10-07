@@ -1,6 +1,6 @@
 from flask import Flask, render_template, Response, flash, request, send_file
 from form import DNSForm, RevForm
-from dns_rq import get_records
+from dns_rq import get_records, get_reversename
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '21a00ee024ebe902cf1848208f5c1a29'
@@ -28,7 +28,12 @@ def dnslookup():
 def Revdnslookup():
     form = RevForm()
     if form.validate_on_submit():
-        return render_template('test.html', post={'www.google.com': '8.8.8.8'}, lon=77.102, lat=28.704)
+        domain_ip = form.domain_name.data
+        temp = get_reversename(domain_ip)
+        if(temp!=-1):
+            flash('The name of the dns server with ip ' + domain_ip + ' is '+temp,"success")
+        else:
+            flash('No DNS found with ip '+domain_ip, 'danger')
     return render_template("revlookup.html", title="Login", form=form)
 
 

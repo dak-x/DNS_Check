@@ -74,8 +74,11 @@ def get_reversename(addr: str, dns_addr="8.8.8.8"):
     x = dns.reversename.from_address(addr)
     msg = dns.message.make_query(x, RdataType.ANY)
     response = dns.query.udp(msg, dns_addr)
-    record = response.find_rrset(
+    try:
+        record = response.find_rrset(
         response.answer, x, RdataClass.IN, RdataType.PTR).to_text().split(" ")[-1]
+    except:
+        return -1
     return record
 
 # Testing for get_records()
