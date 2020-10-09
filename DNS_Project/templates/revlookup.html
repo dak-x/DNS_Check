@@ -25,15 +25,16 @@
     <div class="form-group">
       {{ form.submit(class="btn btn-outline-success")}}
     </div>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" style="box-shadow: none;">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+    {% endwith %}
 
-    <small class="ml-2">
-
-    </small>
-
-    <div class="border-top pt-3">
-      <small class="text-muted ml-2">
-      </small>
-    </div>
   </form>
   </div>
 
