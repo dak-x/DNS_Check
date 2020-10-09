@@ -8,6 +8,7 @@
 <style>
 body, html {height: 100%}
 body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
+.menu {display: none}
 .bgimg{
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,9 +25,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  background-color: #4CAF50;
 }
 
-.button1 {background-color: #4CAF50;} /* Green */
 
 
 </style>
@@ -34,42 +35,36 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
 
 
 <!-- Header with image -->
-<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+<header class="bgimg w3-display-container w3-grayscale-min" id="home" style="background-image:url('static/img/bg4.jpg')">
   <div class="container demo">
    <div class="content">
       <div id="large-header" class="large-header">
-         <canvas id="demo-canvas"> 
-         </canvas>
-               
+         <canvas id="demo-canvas"></canvas>
         <h1 class="main-title"><span class="thin">DNS</span><b> Project</b>
+        
           <div style="margin-top:20px;">
-          <a href="{{ url_for('dnslookup') }}"><button class="button button1" style="margin-left:40px; font-size:20px;">DNS Lookup</button></a>
-          <a href="{{ url_for('dnslookup') }}"><button class="button button1" style="margin-left:100px; font-size: 20px;">Reverse DNS Lookup</button></a>
-          </div>
+            <a href="{{ url_for('dnslookup') }}"><button class="button button1" style="margin-left:40px; font-size:20px;">DNS Lookup</button></a>
+            <a href="{{ url_for('Revdnslookup') }}"><button class="button button1" style="margin-left:100px; font-size: 20px;">Reverse DNS Lookup</button></a>
+            </div>
+        
         </h1>
-      
-      </div>          
       </div>
-    </div>
    </div>
 </div>
 </header>
 
-<!-- About Container -->
+<!-- About -->
 <div class="bgimg w3-display-container w3-padding-64 w3-grayscale-min w3-xlarge" id="about" style="background-image:url('static/img/pricing-bg.jpg')">
   <div class="w3-content" style="color:#FFFFFF;">
     <div id="back"></div>
     <div id="front"></div>
 
     <h1 class="w3-center w3-jumbo" style="padding-top: 250px;">About</h1>
-    <p>This portal was made by students of IIT Jammu as a project.If you are facing some issues on this site or you have any suggestions then please send a message to the creaters</p>
-    
-  </div>
+    <p>This portal was made by students Pradyumn Sharma,Samarth Singh, Daksh Chauhan and Aditya Naresh of IIT Jammu as a project.If you are facing some issues on this site or you have any suggestions then please send a message to the creaters</p>
+      </div>
 </div>
 
 
-<!-- Image of location/map -->
-<!--<img src="static/img/bg4.jpg" class="w3-image w3-greyscale" style="width:100%;"> -->
 
 <!-- Contact -->
 <div class="w3-container w3-padding-64 w3-blue-grey w3-grayscale-min w3-xlarge" style="background-image:url('static/img/footer-bg.jpg')">
@@ -90,12 +85,26 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
   </div>
 </div>
 
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-red";
+}
+document.getElementById("myLink").click();
+
+</script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo.js"></script>
 </body>
 </html>
-
-
-
-
