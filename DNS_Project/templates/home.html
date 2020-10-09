@@ -5,62 +5,71 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="static/bg.css">
-<link rel="stylesheet" type="text/css" href="static/animate.css">
 <style>
 body, html {height: 100%}
 body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
-.menu {display: none}
 .bgimg{
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 90%;
 }
 
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+
 
 </style>
 <body>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top w3-hide-small">
-  <div class="w3-bar w3-xlarge w3-transparent w3-opacity w3-hover-opacity-off" id="myNavbar">
-    <a style="font-size:62px; padding-top: 50px; color: white;
-  padding-right: 30px;
-  padding-bottom: 30px;
-  padding-left: 30px; text-shadow: 3px 2px grey; font-weight:bold; text-decoration: none " href="/">Home</a>
-        <ul>
-            <a class="nav-item nav-link" style="font-size:32px;font-weight:bold; color: white;text-decoration: none" href="{{ url_for('dnslookup') }}">DNS Lookup</a>
-            <a class="nav-item nav-link" style="font-size:32px;font-weight:bold;padding-top: 20px; color: white;
-  padding-right: 10px;
-  padding-bottom: 20px;
-  padding-left: 20px;text-decoration: none" href="{{ url_for('Revdnslookup') }}">Reverse DNS Lookup</a>
-        </ul>
-  </div>
-</div>
 
 <!-- Header with image -->
-<header class="bgimg w3-display-container w3-grayscale-min" id="home" style="background-image:url('static/img/bg4.jpg')">
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
   <div class="container demo">
    <div class="content">
       <div id="large-header" class="large-header">
-         <canvas id="demo-canvas"></canvas>
-        <h1 class="main-title"><span class="thin">DNS</span><b> Project</b></h1>
+         <canvas id="demo-canvas"> 
+         </canvas>
+               
+        <h1 class="main-title"><span class="thin">DNS</span><b> Project</b>
+          <div style="margin-top:20px;">
+          <a href="{{ url_for('dnslookup') }}"><button class="button button1" style="margin-left:40px; font-size:20px;">DNS Lookup</button></a>
+          <a href="{{ url_for('dnslookup') }}"><button class="button button1" style="margin-left:100px; font-size: 20px;">Reverse DNS Lookup</button></a>
+          </div>
+        </h1>
+      
+      </div>          
       </div>
+    </div>
    </div>
 </div>
 </header>
 
-<!-- About -->
+<!-- About Container -->
 <div class="bgimg w3-display-container w3-padding-64 w3-grayscale-min w3-xlarge" id="about" style="background-image:url('static/img/pricing-bg.jpg')">
   <div class="w3-content" style="color:#FFFFFF;">
     <div id="back"></div>
     <div id="front"></div>
 
     <h1 class="w3-center w3-jumbo" style="padding-top: 250px;">About</h1>
-    <p>This portal was made by students Pradyumn Sharma,Samarth Singh, Daksh Chauhan and Aditya Naresh of IIT Jammu as a project.If you are facing some issues on this site or you have any suggestions then please send a message to the creaters</p>
-      </div>
+    <p>This portal was made by students of IIT Jammu as a project.If you are facing some issues on this site or you have any suggestions then please send a message to the creaters</p>
+    
+  </div>
 </div>
 
 
+<!-- Image of location/map -->
+<!--<img src="static/img/bg4.jpg" class="w3-image w3-greyscale" style="width:100%;"> -->
 
 <!-- Contact -->
 <div class="w3-container w3-padding-64 w3-blue-grey w3-grayscale-min w3-xlarge" style="background-image:url('static/img/footer-bg.jpg')">
@@ -81,26 +90,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
   </div>
 </div>
 
-<script>
-// Tabbed Menu
-function openMenu(evt, menuName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("menu");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-  }
-  document.getElementById(menuName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-red";
-}
-document.getElementById("myLink").click();
-
-</script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo.js"></script>
 </body>
 </html>
+
+
+
+
