@@ -20,7 +20,10 @@ def dnslookup():
         type = form.type.data
         dns_server = form.default_dns.data
         temp = (get_records(domain_name,type,dns_server))
-        return render_template('test.html', post=temp, lon=77.102, lat=28.704)
+        flag = False
+        if(type == "A" or type == "ANY"):
+            flag = True
+        return render_template('test.html', post=temp, lon=77.102, lat=28.704, flag=flag)
     return render_template("dnslookup.html", title="Login", form=form)
 
 
