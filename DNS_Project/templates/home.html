@@ -12,8 +12,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
 .bgimg{
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 90%;
-}
+  min-height: 90%;}
 
 .button {
   border: none;
@@ -40,7 +39,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
    <div class="content">
       <div id="large-header" class="large-header">
          <canvas id="demo-canvas"></canvas>
-        <h1 class="main-title"><span class="thin">DNS</span><b> Project</b>
+        <h1 class="main-title"><span class="thin">DNS</span> Project
         
           <div style="margin-top:20px;">
             <a href="{{ url_for('dnslookup') }}"><button class="button button1" style="margin-left:40px; font-size:20px;">DNS Lookup</button></a>
@@ -85,24 +84,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
   </div>
 </div>
 
-<script>
-// Tabbed Menu
-function openMenu(evt, menuName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("menu");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-  }
-  document.getElementById(menuName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-red";
-}
-document.getElementById("myLink").click();
-
-</script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo.js"></script>

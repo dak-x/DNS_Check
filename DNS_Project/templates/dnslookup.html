@@ -1,10 +1,28 @@
 {% extends "layout.html" %} {% block content %}
+<style>
+.wrapper{position:relative;}
+.left{width:50%; position:relative;left:3%;}
+.left{left:0;}
+.right{
+    width: 40%;
+    right:0;
+    position:absolute;
+    margin-right:3%;
+    top:2%;
+    padding:2%;
+  }
+
+</style>
+
+
 <div class="content-section">
     <form action="" method="POST">
         {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4" style="color: white">DNS Lookup</legend>
-
+        <fieldset class="form-group" style="border: none;">
+            <div>
+            <legend style="color: white;">DNS Lookup</legend>
+            </div>
+        </fieldset>
             <div class="form-group" style="color: white">
                 {{ form.domain_name.label(class="form-control-label") }} {% if form.domain_name.errors %} {{ form.domain_name(class="form-control form-control-lg is-invalid")}}
                 <div class="invalid-feedback">
@@ -54,5 +72,13 @@
     </form>
 </div>
 
+
+
+<div class="right" style="border-style: solid; border-color: white; color: white; font-size:25px;">
+      <p>DNS Lookup tool fetches all DNS Records of a domain and shows as received. If you changed your hosting or DNS records, 
+          then this tool is for you to verify that your records are entered correctly to avoid any downtime. 
+          The records fetched by this tool are A, AAAA, CNAME, MX, NS, PTR, SRV, SOA, TXT, CAA. Select any record which you want to check 
+          or select ANY to get all DNS records of your domain.</p>  
+</div>
 
 {% endblock content %}
