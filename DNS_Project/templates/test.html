@@ -34,7 +34,12 @@
     <div style="width: 600px;
   margin: 20px;background-image: url('static/img/formbg.png')">
         <h2 style="color: white">{{ key }}</h2>
-        <table style="border:3px solid black;box-shadow:2px 2px 2px black;
+        {% if post[key] |length ==2 and post[key][1] |length ==3 %}
+        <div>
+        <h6 style="color: white">No Records Found!!</h6>
+        </div>
+        {% else %}
+        <table style="border:3px solid white;box-shadow:2px 2px 2px white;
         padding: 50px;
         margin: 30px;
         width: 500px;
@@ -50,6 +55,7 @@
           </tr> 
             {% endfor %}
           </table>
+        {% endif %}
     </div>
         {% endfor %}
 {% if flag %}
