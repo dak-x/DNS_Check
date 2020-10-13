@@ -24,9 +24,7 @@ def dnslookup():
         rd = form.recursion_desired.data
         if(rd == False):
             temp = (get_recordsRecursive(domain_name,type,dns_server))
-            if(temp == -1):
-                flash('The root does not have the record !! Choose another server or allow recursion ', 'danger')
-                return render_template("dnslookup.html", title="Login", form=form)
+
         else:
             temp = get_records(domain_name,type,dns_server)
         flag = False
@@ -43,7 +41,7 @@ def dnslookup():
                     lat,lon = response['lat'], response['lon']
                 flag = True
             except:
-                flash('The server doesnot allow recursion please deselect recursion desired', 'danger')
+                flash('The root does not have the record !! Choose another server or allow recursion ', 'danger')
                 return render_template("dnslookup.html", title="Login", form=form)
         return render_template('test.html', post=temp, lon=lon, lat=lat, flag=flag)
     return render_template("dnslookup.html", title="Login", form=form)

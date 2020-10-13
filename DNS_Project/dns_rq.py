@@ -41,7 +41,7 @@ def RecursiveDNS(domain,rdtype,root_server):
                 except Exception as e:
                     pass
         else:
-            return -1
+            return request
     else:
         return(response)
 # Has been directly imported into app.py
