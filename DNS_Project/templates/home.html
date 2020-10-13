@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="static/bg.css">
 <style>
 body, html {height: 100%}
-body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
+body,h1,h2,h3,h4,h5,h6 {font-family: sans-serif;}
 .menu {display: none}
 .bgimg{
   background-repeat: no-repeat;
@@ -39,11 +39,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Times New Roman", Times, serif;}
    <div class="content">
       <div id="large-header" class="large-header">
          <canvas id="demo-canvas"></canvas>
-        <h1 class="main-title"><span class="thin">DNS</span> Project
+        <h1 class="main-title"><span class="thin">DNS Project</span>
         
           <div style="margin-top:20px;">
-            <a href="{{ url_for('dnslookup') }}"><button class="button button1" style="margin-left:40px; font-size:20px;">DNS Lookup</button></a>
-            <a href="{{ url_for('Revdnslookup') }}"><button class="button button1" style="margin-left:100px; font-size: 20px;">Reverse DNS Lookup</button></a>
+            <a href="{{ url_for('dnslookup') }}"><button class="button button1" style="margin-left:40px; font-size:20px; width: 300px;">DNS Lookup </button></a>
+            <a href="{{ url_for('Revdnslookup') }}"><button class="button button1" style="margin-left:40px; font-size: 20px; width: 300px;">Reverse DNS Lookup </button></a>
             </div>
         
         </h1>

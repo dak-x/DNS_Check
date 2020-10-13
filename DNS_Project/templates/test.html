@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
       .map {
         height: 400px;
-        width: 40%;
-        right:0;
+        width: 39%;
+        left: 60%;
         position:absolute;
-        margin-right:3%;
+        
       }
     .wrapper{position:relative;}
     .left{width:50%; position:relative;}
@@ -25,8 +26,18 @@
       <title>DNS LOOKUP</title>
     {% endif %}
   </head>
-  <body style="background-image: url('static/img/bg4.jpg') ;background-color:violet; background-position:center;background-attachment: fixed;">
-    
+  <body style="background-image: url('static/img/bg4.jpg') ;background-color:violet; background-position:center;background-attachment: fixed;background-repeat: no-repeat; background-size: 100% 100%;" >
+    <!-- !NAV BAR -->
+    <div class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container">
+        <a class="w3-bar w3-xlarge w3-transparent w3-opacity w3-hover-opacity-off" style="color:white;" href="/">DNS Project</a>
+          <a class="w3-bar w3-xlarge w3-transparent w3-opacity w3-hover-opacity-off" style="color: white;" href="{{ url_for('dnslookup') }}">DNS LookUp</a>
+          <a class="w3-bar w3-xlarge w3-transparent w3-opacity w3-hover-opacity-off" style="color: white;" href="{{ url_for('Revdnslookup') }}">Reverse DNS LookUp</a>
+      </div>
+    </div>
+
+
+
     <script>var lon={{lon}};  var lat={{lat}}; </script>
     <div class="bgimg3 w3-display-container wrapper">
       <div id="left_half" class="left" style="margin: 10px; height: 400px;" >
@@ -38,15 +49,15 @@
         <h2 style="color: white">{{ key }}</h2>
         {% if post[key] |length ==2 and post[key][1] |length ==3 %}
         <div>
-        <h6 style="color: white;font-size:18px;">No Records Found!!</h6>
+        <h6 style="color: white;font-size:20px;">No Records Found!!</h6>
         </div>
         {% else %}
-        <table style="border:3px solid white;box-shadow:2px 2px 2px white;
+        <table style="border:3px solid white;
         padding: 50px;
         margin: 30px;
-        width: 500px;
+        width: 50%;
         color:white;
-        font-size:25px;
+        font-size:20px;
         float: left;
         ">
             {% for x in post[key] %}
