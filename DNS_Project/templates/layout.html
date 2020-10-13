@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     {% if title %}
       <title> {{ title }} </title>
     {% else %}
@@ -11,15 +13,16 @@
     {% endif %}
   </head>
   <body style="background-image: url('static/img/bg4.jpg') ;background-color:voilet; background-position:center;background-attachment: fixed;">
-    <div id="back"></div>
-    <div id="front"></div>
-
+    
     <div class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="/">DNS Project</a>
+        <a class="w3-bar w3-xlarge w3-transparent w3-opacity w3-hover-opacity-off" style="color:white;" href="/">DNS Project</a>
+          <a class="w3-bar w3-xlarge w3-transparent w3-opacity w3-hover-opacity-off" style="color: white;" href="{{ url_for('dnslookup') }}">DNS LOOKUP</a>
+          <a class="w3-bar w3-xlarge w3-transparent w3-opacity w3-hover-opacity-off" style="color: white;" href="{{ url_for('Revdnslookup') }}">Reverse DNS Lookup</a>
       </div>
     </div>
-    <div class="bgimg3 w3-display-container">
+
+    <div class="bgimg3 w3-display-container" style="top:13%;">
     <div style="width: 600px;
   border: 2px solid black;
   box-shadow: 5px 5px 2px black;

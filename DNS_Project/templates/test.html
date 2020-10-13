@@ -5,12 +5,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
     <style>
       .map {
-        height: 500px;
-        width: 300px;
+        height: 400px;
+        width: 40%;
+        right:0;
+        position:absolute;
+        margin-right:3%;
       }
     .wrapper{position:relative;}
-    .right,.left{width:50%; position:absolute;}
-    .right{right:0;}
+    .left{width:50%; position:relative;}
     .left{left:0;}
 
     </style>
@@ -27,16 +29,16 @@
     
     <script>var lon={{lon}};  var lat={{lat}}; </script>
     <div class="bgimg3 w3-display-container wrapper">
-        <div id="left_half" class="left" style="margin: 10px; height: 400px;
-  width: 400px;" ></div>
-        {% for key in post %}
+      <div id="left_half" class="left" style="margin: 10px; height: 400px;" >
 
-    <div style="width: 600px;
-  margin: 20px;background-image: url('static/img/formbg.png')">
+    {% for key in post %}
+
+      <div class="left"style="width:30%;
+      margin: 20px;background-image: url('static/img/formbg.png')">
         <h2 style="color: white">{{ key }}</h2>
         {% if post[key] |length ==2 and post[key][1] |length ==3 %}
         <div>
-        <h6 style="color: white">No Records Found!!</h6>
+        <h6 style="color: white;font-size:18px;">No Records Found!!</h6>
         </div>
         {% else %}
         <table style="border:3px solid white;box-shadow:2px 2px 2px white;
@@ -59,6 +61,7 @@
     </div>
         {% endfor %}
 {% if flag %}
+    </div>
 <div id="map" class="map right" style="top: 0%;"></div>
 
 <div id="popup" class="ol-popup">
