@@ -64,7 +64,7 @@ def get_records(domain_name: str, record_type, dns_addr: str):
     Table_Header = {
         RdataType.A: ["Type", "Domain Name", "Address", "TTL"],
         RdataType.AAAA: ["Type", "Domain Name", "Address", "TTL"],
-        RdataType.CNAME: [],
+        RdataType.CNAME: ["Name","TTL","Content"],
         RdataType.MX: ["Type", "Domain Name", "Pref", "Hostname", "TTL"],
         RdataType.NS: ["Type", "Domain Name", "NS", "TTL"],
         RdataType.PTR: [],

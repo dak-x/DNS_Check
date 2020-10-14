@@ -1,4 +1,5 @@
-from flask import Flask, render_template, Response, flash, request, send_file
+from flask import Flask, render_template,flash
+from flaskwebgui import FlaskUI
 from form import DNSForm, RevForm
 from dns_rq import get_records, get_reversename, get_recordsRecursive
 import flask_excel as xl
@@ -42,6 +43,7 @@ def dnslookup():
             _records.append([])
             for r in temp[row]:
                 _records.append(r)
+        # *====================================* #
 
         flag = False
         lon = 77.102
@@ -58,9 +60,12 @@ def dnslookup():
                     lat, lon = response['lat'], response['lon']
                 flag = True
             except:
-                flash(
-                    'The root does not have the record !! Choose another server or allow recursion ', 'danger')
-                return render_template("dnslookup.html", title="Login", form=form)
+                if(rd == False):
+                    flash('The root does not have the record !! Choose another server or allow recursion ', 'danger')
+                    return render_template("dnslookup.html", title="Login", form=form)
+                else:
+                    flash('The server does-not allow recursion','danger')
+                    return render_template("dnslookup.html", title="Login", form=form)
         return render_template('test.html', post=temp, lon=lon, lat=lat, flag=flag)
     return render_template("dnslookup.html", title="Login", form=form)
 
@@ -92,4 +97,7 @@ def get_csv():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', threaded=True, debug=True)
+    ui = FlaskUI(app,fullscreen=True,maximized=True,browser_path = "/snap/bin/firefox")
+    ui.run()
+    #app.run(host='0.0.0.0', threaded=True, debug=True)
+
