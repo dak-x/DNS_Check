@@ -34,7 +34,9 @@ def dnslookup():
 
         else:
             temp = get_records(domain_name, type, dns_server)
-
+        if(temp == -2):
+            flash('Invalid Fields please check again!!', 'danger')
+            return render_template("dnslookup.html", title="Login", form=form)
         # *This section creates a global records var which can be used for download
         _records = [["Domain Name", domain_name], [
             "Request Type", type], ["Request To", dns_server]]
@@ -64,7 +66,7 @@ def dnslookup():
                     flash('The root does not have the record !! Choose another server or allow recursion ', 'danger')
                     return render_template("dnslookup.html", title="Login", form=form)
                 else:
-                    flash('The server does-not allow recursion','danger')
+                    flash('The server does-not allow recursion or the domain name doesnot exist','danger')
                     return render_template("dnslookup.html", title="Login", form=form)
         return render_template('test.html', post=temp, lon=lon, lat=lat, flag=flag)
     return render_template("dnslookup.html", title="Login", form=form)
@@ -97,7 +99,10 @@ def get_csv():
 
 
 if __name__ == '__main__':
-    ui = FlaskUI(app,fullscreen=True,maximized=True,browser_path = "/snap/bin/firefox")
+    try:
+        ui = FlaskUI(app,fullscreen=True,maximized=True)
+    except:
+        ui = FlaskUI(app, fullscreen=True, maximized=True, browser_path="/snap/bin/firefox")
     ui.run()
     #app.run(host='0.0.0.0', threaded=True, debug=True)
 
