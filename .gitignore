@@ -1,3 +1,4 @@
 DNS_Project/__pycache__
-dist
-build
+DNS_Project/build 
+DNS_Project/dist 
+DNS_Project/app.spec
